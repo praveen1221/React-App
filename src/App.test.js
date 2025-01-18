@@ -18,32 +18,42 @@ test("navigates to edit inventory list", () => {
     </MemoryRouter>
   );
   fireEvent.click(screen.getAllByText("Edit List")[0]);
-  expect(screen.getByText("Your code goes here")).toBeInTheDocument();
+  expect(screen.getByText("View Deleted")).toBeInTheDocument();
 });
 
-test.skip("adds item to list", () => {
+test("adds item to list", () => {
   render(
     <MemoryRouter initialEntries={["/lists"]}>
       <App />
     </MemoryRouter>
   );
   // Add your test here
+  fireEvent.change(screen.getByTestId("itemName"),{target :{value : "item1"}})
+  fireEvent.click(screen.getByTestId("addBtn"));
+
 });
 
-test.skip("removes items from list", () => {
+test("removes items from list", () => {
   render(
     <MemoryRouter initialEntries={["/lists"]}>
       <App />
     </MemoryRouter>
   );
   // Add your test here
+  fireEvent.click(screen.getAllByTestId("deleteBtn")[0]);
+  expect(screen.queryByText("Sample Item 1")).not.toBeInTheDocument();
+
+
 });
 
-test.skip("clears list", () => {
+test("clears list", () => {
   render(
     <MemoryRouter initialEntries={["/lists"]}>
       <App />
     </MemoryRouter>
   );
   // Add your test here
+  fireEvent.click(screen.getByTestId("clearAllBtn"));
+  expect(screen.queryByTestId("deleteBtn")).not.toBeInTheDocument();
+
 });

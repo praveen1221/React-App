@@ -40,3 +40,19 @@ table {
 .App-link {
   color: var(--bs-primary)
 }
+
+.delete-x-icon {
+  color:  #d73838;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.delete-x-icon:hover{
+  color: #850000;
+}
+
+.deleted-row{
+  color: gray;
+}
